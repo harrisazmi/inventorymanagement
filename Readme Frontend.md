@@ -19,7 +19,6 @@ Before running the application, ensure you have the following installed:
 PORT=3001
 MONGO_DB_URL=<your_mongodb_connection_url>
 
-
 Replace `<your_mongodb_connection_url>` with your MongoDB connection URL.
 
 ## Running the Application
@@ -83,7 +82,8 @@ Content-Type: application/json
   "supplierId": "supplier_id"
 }
 ```
-_______________________________
+
+---
 
 ### Update an inventory item
 
@@ -105,10 +105,11 @@ Content-Type: application/json
   "message": "Database populated successfully"
 }
 ```
+
 ### Additional Notes
+
 Ensure that the MongoDB server is running before starting the application.
 Make sure to replace placeholders like :id and supplier_id with actual values when making requests.
-
 
 # Inventory Management System Frontend - React with Vite
 
@@ -151,15 +152,16 @@ This project is an Inventory Management System implemented using React.js for th
    ```bash
    git clone <repository-url>
    ```
-   
+
 2. Install dependencies:
 
-  ```bash
+```bash
 cd <project-folder>
 npm install
 ```
 
 3. Set up environment variables:
+
 - Create a .env file in the root of the project.
 - Define the backend URL in the .env file:
 - Read documentation for Vite as the way it interact is different with Create React App
@@ -169,6 +171,7 @@ VITE_BACKEND_URL=http://localhost:8000
 ```
 
 4. Start the React development server:
+
 ```bash
 npm start
 ```
@@ -176,4 +179,5 @@ npm start
 5. Edit as you wanted.
 
 ## Contributing
+
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
