@@ -1,4 +1,4 @@
-# Inventory Management System API
+# Inventory Management System API - Backend
 
 This Inventory Management System API provides endpoints for managing inventory items and suppliers. It allows users to perform CRUD (Create, Read, Update, Delete) operations on inventory items and suppliers.
 
