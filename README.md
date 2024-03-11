@@ -13,7 +13,7 @@ This Inventory Management System API provides endpoints for managing inventory i
 Before running the application, ensure you have the following installed:
 
 - Node.js
-- MongoDB
+- Mongo Atlas
 - Any HTTP client or tool like Postman for testing API endpoints
 
 ## Setup
@@ -25,7 +25,7 @@ Before running the application, ensure you have the following installed:
 PORT=3001
 MONGO_DB_URL=<your_mongodb_connection_url>
 
-Replace `<your_mongodb_connection_url>` with your MongoDB connection URL.
+Replace `<your_mongodb_connection_url>` with your Mongo Atlas connection URL.
 
 ## Running the Application
 
