@@ -108,4 +108,72 @@ Content-Type: application/json
 ### Additional Notes
 Ensure that the MongoDB server is running before starting the application.
 Make sure to replace placeholders like :id and supplier_id with actual values when making requests.
-Feel free to explore and use the API to manage your inventory effectively! If you encounter any issues or have questions, don't hesitate to reach out.
+
+
+# Inventory Management System Frontend - React with Vite
+
+## Description
+
+This project is an Inventory Management System implemented using React.js for the front end and a backend API for handling data storage and retrieval. It allows users to add new items to the inventory, search for items by name, delete items, and paginate through the inventory list.
+
+## Features
+
+1. **Add New Item**: Users can add new items to the inventory by providing the item name and quantity.
+
+2. **Find Item**: Users can search for items by entering a search term. The system filters the inventory based on the search term.
+
+3. **Delete Item**: Users can delete items from the inventory.
+
+4. **Pagination**: Inventory items are paginated to enhance user experience when dealing with large datasets.
+
+## Technologies Used
+
+- **React.js**: A JavaScript library for building user interfaces.
+- **Axios**: A promise-based HTTP client for making requests to the backend API.
+- **Tailwind CSS**: A utility-first CSS framework used for styling the UI components.
+- **Node.js**: A JavaScript runtime used for building the backend API.
+- **Express.js**: A web application framework for Node.js used for building the backend API.
+- **MongoDB**: A NoSQL database used for storing the inventory data.
+- **Pagination Component**: Custom pagination component built using React.js.
+
+## Project Structure
+
+- **src/components**: Contains React components for different sections of the application.
+- **src/App.js**: Main React component containing the application logic.
+- **src/index.js**: Entry point of the React application.
+- **public**: Contains static assets such as HTML files and favicon.
+- **backend**: Contains backend API code.
+
+## Setup Instructions
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   ```
+   
+2. Install dependencies:
+
+  ```bash
+cd <project-folder>
+npm install
+```
+
+3. Set up environment variables:
+- Create a .env file in the root of the project.
+- Define the backend URL in the .env file:
+- Read documentation for Vite as the way it interact is different with Create React App
+
+```bash
+VITE_BACKEND_URL=http://localhost:8000
+```
+
+4. Start the React development server:
+```bash
+npm start
+```
+
+5. Edit as you wanted.
+
+## Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
