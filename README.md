@@ -85,7 +85,7 @@ Content-Type: application/json
 ```
 _______________________________
 
-###Update an inventory item
+### Update an inventory item
 
 PUT /api/update-inventory/:id
 Content-Type: application/json
