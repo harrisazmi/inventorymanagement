@@ -90,19 +90,22 @@ _______________________________
 PUT /api/update-inventory/:id
 Content-Type: application/json
 
+```json
 {
   "itemName": "Updated Item",
   "quantity": 20,
   "supplierId": "supplier_id"
 }
+```
 
 ## Sample Response
 
+```json
 {
   "message": "Database populated successfully"
 }
-
-###Additional Notes
+```
+### Additional Notes
 Ensure that the MongoDB server is running before starting the application.
 Make sure to replace placeholders like :id and supplier_id with actual values when making requests.
 Feel free to explore and use the API to manage your inventory effectively! If you encounter any issues or have questions, don't hesitate to reach out.
