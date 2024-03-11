@@ -83,6 +83,7 @@ Content-Type: application/json
   "supplierId": "supplier_id"
 }
 ```
+_______________________________
 
 ###Update an inventory item
 
