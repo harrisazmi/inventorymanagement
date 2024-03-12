@@ -133,6 +133,21 @@ app.put("/api/update-inventory/:id", async (req, res) => {
   }
 });
 
+// Remove all data from the populated table
+app.post("/api/remove-all-data", async (req, res) => {
+  try {
+    // Remove all inventory items
+    await Inventory.deleteMany({});
+
+    // Remove all suppliers
+    await Supplier.deleteMany({});
+
+    res.json({ message: "All data removed successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Populate the DB with at least 1000 rows of data
 app.post("/api/populate-database", async (req, res) => {
   try {
