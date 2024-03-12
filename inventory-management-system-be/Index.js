@@ -75,6 +75,20 @@ app.get("/api/inventory", async (req, res) => {
   }
 });
 
+// Get information for a specific inventory item by ID
+app.get("/api/inventory/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const inventoryItem = await Inventory.findById(id).populate("supplier");
+    if (!inventoryItem) {
+      return res.status(404).json({ message: "Inventory item not found" });
+    }
+    res.json(inventoryItem);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Add new inventory item
 app.post("/api/inventory", async (req, res) => {
   try {
@@ -122,12 +136,47 @@ app.put("/api/update-inventory/:id", async (req, res) => {
 // Populate the DB with at least 1000 rows of data
 app.post("/api/populate-database", async (req, res) => {
   try {
-    // Your code to populate the database goes here
+    // Function to generate random data
+    const generateRandomData = (count) => {
+      const data = [];
+      for (let i = 0; i < count; i++) {
+        const itemName = `Item ${i + 1}`;
+        const quantity = Math.floor(Math.random() * 100) + 1; // Random quantity between 1 and 100
+        data.push({ itemName, quantity });
+      }
+      return data;
+    };
+
+    // Generate random inventory items
+    const inventoryData = generateRandomData(1000);
+
+    // Create suppliers
+    const supplierNames = ["Supplier A", "Supplier B", "Supplier C"];
+    const supplierData = supplierNames.map((name) => ({
+      name,
+      address: "Random Address",
+      contact: "Random Contact",
+    }));
+
+    // Insert suppliers into the database
+    const insertedSuppliers = await Supplier.insertMany(supplierData);
+
+    // Link random suppliers to inventory items
+    inventoryData.forEach((item, index) => {
+      const randomSupplierIndex = Math.floor(
+        Math.random() * supplierNames.length
+      );
+      item.supplier = insertedSuppliers[randomSupplierIndex]._id;
+    });
+
+    // Insert inventory items into the database
+    await Inventory.insertMany(inventoryData);
+
     res.json({ message: "Database populated successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-}); 
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

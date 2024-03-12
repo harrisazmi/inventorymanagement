@@ -11,6 +11,8 @@ function App() {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(20); // Default value
+  const [selectedProductId, setSelectedProductId] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const backendlink = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
@@ -69,6 +71,18 @@ function App() {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleProductClick = async (productId) => {
+    setSelectedProductId(productId);
+    try {
+      const response = await axios.get(
+        `${backendlink}/api/inventory/${productId}`
+      );
+      setSelectedProduct(response.data);
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
   };
 
   useEffect(() => {
@@ -187,7 +201,12 @@ function App() {
                 {currentItems.map((item) => (
                   <tr key={item._id}>
                     <td className="border border-gray-300 px-4 py-2 text-center">
-                      {item.itemName}
+                      <button
+                        onClick={() => handleProductClick(item._id)}
+                        className="text-blue-500 underline hover:text-blue-700"
+                      >
+                        {item.itemName}
+                      </button>
                     </td>
                     <td className="border border-gray-300 px-4 py-2 text-center">
                       {item.quantity}
@@ -216,6 +235,20 @@ function App() {
           </>
         )}
       </div>
+
+      {selectedProduct && (
+        <div className="border border-blue-500 rounded-md p-4 mb-4">
+          <h2 className="text-lg font-bold mb-2 text-center">
+            Selected Product Details
+          </h2>
+          <p>
+            <strong>Item Name:</strong> {selectedProduct.itemName}
+          </p>
+          <p>
+            <strong>Quantity:</strong> {selectedProduct.quantity}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
